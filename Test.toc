@@ -1,0 +1,8 @@
+## Interface: 110007
+## Title: LYCTestAddon
+## Notes: Test for LYC WeakAuras Custom Lua 
+## Version: 1.0.0
+
+# comment
+
+Test.lua
