@@ -69,7 +69,19 @@ function this.HandleDie(guid, overkillSource)
   local nickname = guid == myGuid and LYC_MAXITUAN.config.nickname or info.nickname
   local unitName = guid == myGuid and myUnitName or info.unitName
 
+  -- UnitGroupRolesAssigned("player")
 
-  -- guid,nickname,unitName,overkillSource:dieCount:totalDieCount
-  C_ChatInfo.SendAddonMessage(prefix.."_DIE",guid..","..nickname..","..unitName..":"..overkillSource..":"..dieStatistical[guid]..":"..totalDieCount)
+  local deadUnit
+
+  for i = 0, 4, 1 do
+    local unit = i == 0 and "player" or "party"..i
+    if guid == UnitGUID(unit) then
+      deadUnit = unit
+    end
+  end
+
+  -- guid,nickname,unitName,DPS:dieType,spellID:dieCount,totalDieCount
+  C_ChatInfo.SendAddonMessage(prefix.."_DIE", guid..","..nickname..","..unitName..","..UnitGroupRolesAssigned(deadUnit)..":"..overkillSource..":"..dieStatistical[guid]..":"..totalDieCount, "PARTY")
+  -- /run C_ChatInfo.SendAddonMessage("MXT_DIE", UnitGUID("player")..",".."尼"..","..UnitName("player")..":SWING:"..(1)..","..1, "PARTY")
 end
+

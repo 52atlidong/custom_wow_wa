@@ -1,0 +1,6 @@
+裁剪
+ffmpeg -i lyc_air_normal.mp3 -ss 00:00:02 -to 00:00:05 -c copy output_normal.mp3
+裁剪倒放
+ffmpeg -i output_normal.mp3 -ss 00:00:00 -to 00:00:06 -filter_complex "areverse" -c:a libmp3lame output_reverse.mp3
+合并
+ffmpeg -i output_normal.mp3 -i output_reverse.mp3 -filter_complex "[0][1]concat=n=2:v=0:a=1" -c:a libmp3lame final_output.mp3

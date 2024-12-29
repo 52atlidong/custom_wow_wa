@@ -3,14 +3,13 @@
 -- name:key:type
 -- 前缀:prefix:string
 -- 昵称:nickname:string
--- 队长开场白:msgMythicStartLeader:string[]
--- 队员开场白:msgMythicStartNormal:string[]
--- 死亡文案:msgYouDie:string[]
--- 其他人死亡文案:msgOtherDie:string[]
--- 坠落死亡:msgYouDieByFalling:string[]
--- 队友坠落死亡:msgOtherDieByFalling:string[]
--- 环境火焰死亡:msgYouDieByFire:string[]
--- 队友环境火焰死亡:msgOtherDieByFire:string[]
+-- 大秘境开始:msgMythicStart:string[]
+-- 倒T:msgDieTank:string[]
+-- 一般死亡:msgDie:string[]
+-- 近战攻击死亡:msgDieSwing:string[]
+-- 该躲不躲死亡:msgDieAvoidable:string[]
+-- 坠落伤害死亡:msgDieFalling:string[]
+-- 环境火焰死亡:msgDieFire:string[]
 -- 队友死亡物品使用ID:useItemID:string
 
 local this = aura_env
@@ -45,7 +44,8 @@ C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_INFO_RES")
 C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_M_START")
 -- 有人死亡
 C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_DIE")
-
+-- 大秘境完成
+C_ChatInfo.RegisterAddonMessagePrefix(prefix.."M_COMP")
 -- 初始化完成 发送时间
 WeakAuras.ScanEvents("EVENT_LYC_MAXITUAN_INITIALIZED")
 

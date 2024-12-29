@@ -32,8 +32,9 @@ function (event, ...)
         this.overkillSources[guid] = "SPELL"..","..spellID
       end
     elseif "ENVIRONMENTAL_DAMAGE" == subevent then
-      -- 环境伤害
+      -- 环境伤害 Falling
       local type = select(12, ...)
+      print(type)
       this.overkillSources[guid] = type
     elseif "UNIT_DIED" == subevent then
       local overkillSource = this.overkillSources[guid] or "Unknown"
