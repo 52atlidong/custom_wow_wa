@@ -11,16 +11,12 @@ function (event, ...)
 
             local strs = LYC_MAXITUAN.Split(message, ":")
             local unitInfo = LYC_MAXITUAN.Split(strs[1],",")
-            
             local dieIsMe = UnitGUID("player") == unitInfo[1]
-
-            -- print(dieIsMe)
-
-            local role = unitInfo[4]
-
-            this.role = role
-
-            return true
+            if not dieIsMe then
+                local role = unitInfo[4]
+                this.role = role
+                return true
+            end
         end
     end
     return false
