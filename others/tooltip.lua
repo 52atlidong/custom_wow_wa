@@ -2,6 +2,19 @@
 
 local this = aura_env
 
+local function ADDUICOLOR(text, unit)
+  if not text or not unit then return end
+  if UnitIsPlayer(unit) then
+    local _, class = UnitClass(unit)
+    if not class then return ("|cffFF0000" .. text .. "|r") end
+    local colorStr = RAID_CLASS_COLORS[class].colorStr
+    return ("|c" .. colorStr .. text .. "|r")
+  elseif UnitReaction(unit, "player") then
+    local color = FACTION_BAR_COLORS and FACTION_BAR_COLORS[UnitReaction(unit, "player")]
+    return ("|cff%.2x%.2x%.2x" .. text .. "|r"):format(color.r * 255, color.g * 255, color.b * 255)
+  end
+end
+
 -- id和图标
 local function ShowID(self, data)
   if self:IsTooltipType(Enum.TooltipDataType.Item) then
@@ -18,7 +31,7 @@ local function ShowID(self, data)
   elseif data.id then
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(data.id)
     local source
-    if aura and aura.sourceUnit then source = ns.ADDUICOLOR(UnitName(aura.sourceUnit), aura.sourceUnit) end
+    if aura and aura.sourceUnit then source = ADDUICOLOR(UnitName(aura.sourceUnit), aura.sourceUnit) end
     self:AddDoubleLine("|cffBA55D3法术ID:|r|cff00FF00" .. data.id .. "|r", source)
 
     local spellInfo = C_Spell.GetSpellInfo(data.id)
@@ -38,7 +51,7 @@ local function tartooltip(self)
     local text = GameTooltipTextLeft1:GetText()
     local guild, gRank, gRankId = GetGuildInfo(unit)
     local hasText = GameTooltipTextLeft2:GetText()
-    GameTooltipTextLeft1:SetText(ns.ADDUICOLOR(text, unit))
+    GameTooltipTextLeft1:SetText(ADDUICOLOR(text, unit))
     if guild and hasText then
       if (gRank and gRankId) then
         gRank = gRank .. "(" .. gRankId .. ")"
@@ -47,17 +60,17 @@ local function tartooltip(self)
     end
     if guild and GameTooltipTextLeft4 then
       local text4 = GameTooltipTextLeft4:GetText()
-      GameTooltipTextLeft4:SetText(ns.ADDUICOLOR(text4, unit))
+      GameTooltipTextLeft4:SetText(ADDUICOLOR(text4, unit))
     elseif GameTooltipTextLeft3 then
       local text3 = GameTooltipTextLeft3:GetText()
-      GameTooltipTextLeft3:SetText(ns.ADDUICOLOR(text3, unit))
+      GameTooltipTextLeft3:SetText(ADDUICOLOR(text3, unit))
     end
   end
   --显示目标
   if (UnitIsUnit("player", unit .. "target")) then ----目标职业颜色
     self:AddDoubleLine("目标: " .. "|cffff0000>你<|r") ----self:AddLine("< YOU >", 0.5, 1)
   elseif (UnitExists(unit .. "target")) then
-    self:AddDoubleLine("目标: " .. ns.ADDUICOLOR(UnitName(unit .. "target"), unit .. "target"))
+    self:AddDoubleLine("目标: " .. ADDUICOLOR(UnitName(unit .. "target"), unit .. "target"))
   end
 end
 
@@ -97,23 +110,33 @@ local function MythicScore(self)
 end
 
 function this.initTooltip()
+
+  if this.inited then
+    return
+  end
+
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Unit, ShowID)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Item, ShowID)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Spell, ShowID)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.UnitAura, ShowID)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Unit, TooltipBar)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Unit, tartooltip)
+  -- TooltipDataProcessor.RemoveTooltipPostCall(Enum.TooltipDataType.Unit, MythicScore)
+  -- C_TooltipInfo.
+
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, ShowID)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, ShowID)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, ShowID)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, ShowID)
-
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, TooltipBar)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, tartooltip)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, MythicScore)
+  this.inited = true
 end
 
-
-
-
-function ()
+function (event, ...)
   local this = aura_env
-  this.initTooltip()
+  if "PLAYER_ENTERING_WORLD" == event then
+    this.initTooltip()
+  end
 end
-  
-  
-  
