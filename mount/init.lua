@@ -1,12 +1,14 @@
 -- LYC MOUNT INIT
 -- config
 -- default alt ctrl shift
--- type 1完全随机 2随机地面 3随机飞行 4指定随机
+-- type 1随机地面 2随机飞行 3指定随机
 -- custom
 LYC_MOUNT = LYC_MOUNT or {}
 LYC_MOUNT.configs = aura_env.config
 
--- print(LYC_MOUNT.configs['shift'].custom)
+
+
+-- print(LYC_MOUNT.configs['default'].type)
 
 local function CanFly(typeId)
   if typeId == 424 or typeId == 402 or typeId == 445 or typeId == 436 or typeId == 437 or typeId == 444 or typeId == 407 then
@@ -40,16 +42,14 @@ for i = 1, mountCount, 1 do
     local available = false
 
     if type == 1 then
-      available = true
-    elseif type == 2 then
       if not canFly then
         available = true
       end
-    elseif type == 3 then
+    elseif type == 2 then
       if canFly then
         available = true
       end
-    elseif type == 4 then
+    elseif type == 3 then
       if string.find(LYC_MOUNT.configs[mod].custom, name) then
         available = true
       end
