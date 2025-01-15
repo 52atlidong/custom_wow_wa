@@ -1,0 +1,2 @@
+
+console.log('/run if SecureCmdOptionParse("[mod:alt] 1; 0") == "1" then WeakAuras.ScanEvents("LYEA") elseif SecureCmdOptionParse("[mod:shift] 1; 0") == "1" then WeakAuras.ScanEvents("LYES") elseif SecureCmdOptionParse("[mod:ctrl] 1; 0") == "1" then WeakAuras.ScanEvents("LYEC")  else WeakAuras.ScanEvents("LYED") end'.length);
