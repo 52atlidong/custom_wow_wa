@@ -15,6 +15,7 @@ local RESOURCES_GROUP = "资源 - LYC - " .. suffix
 local NB_CORE = 10
 local CORE_WIDTH = 405
 local CORE_HEIGHT = 48
+local SUB_HEIGHT = 48
 local RESOURCES_HEIGHT = 0
 
 LYC = LYC or {}
@@ -90,7 +91,7 @@ end
 local function UpdateAnchorFrame(skipCore)
   if this.isImporting then return end
   
-  local h, y = max(1, CORE_HEIGHT + RESOURCES_HEIGHT), 0
+  local h, y = max(1, RESOURCES_HEIGHT + CORE_HEIGHT + SUB_HEIGHT ), 0
   
   if 1 == h % 2 then
     h = h + 1
@@ -420,7 +421,6 @@ function this.UpdateBar(aura, i, nb)
   
   local cs = region.colorState or ""
   
-  
   if cs ~= "" then
     cs = cs .. "Color"
   else
@@ -428,6 +428,7 @@ function this.UpdateBar(aura, i, nb)
   end
   cg = config[cg]
   local c1 = cg[cs]
+  
   if c1 then
     region.enableGradient = false
     region:Color(unpack(c1))
@@ -508,9 +509,8 @@ function LYC.GrowSub(newPositions, activeRegions)
   local maxCore = min(nb, config.core1.number)
   local x, y
   local xOffset = ((maxCore - 1) * (width + hSpacing) / 2)
-  
   local yOffset = height + RESOURCES_HEIGHT + vSpacing + CORE_HEIGHT + vSpacing
-  
+  SUB_HEIGHT = height + vSpacing
   for i, regionData in ipairs(activeRegions) do
     x = (i - 1) * (width + hSpacing) - xOffset
     y = -yOffset
