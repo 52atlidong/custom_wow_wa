@@ -20,6 +20,7 @@
     "TooltipDataProcessor",
     "GameTooltipTextLeft3",
     "GameTooltipTextLeft4",
-    "FACTION_BAR_COLORS"
+    "FACTION_BAR_COLORS",
+    "DECIMAL_SEPERATOR"
   ]
 }
