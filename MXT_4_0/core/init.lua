@@ -45,8 +45,10 @@ C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_M_START")
 -- 有人死亡
 C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_DIE")
 -- 大秘境完成
-C_ChatInfo.RegisterAddonMessagePrefix(prefix.."M_COMP")
--- 初始化完成 发送时间
+C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_M_COMP")
+-- 通知嗜血
+C_ChatInfo.RegisterAddonMessagePrefix(prefix.."_N_SX")
+-- 初始化完成 发送事件
 WeakAuras.ScanEvents("EVENT_LYC_MAXITUAN_INITIALIZED")
 
 -- 组队状态变更时 校验队伍数据

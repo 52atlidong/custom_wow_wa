@@ -17,3 +17,6 @@ end
 
 
 
+function (event, ...)
+  print(event)
+end

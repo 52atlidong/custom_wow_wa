@@ -12,7 +12,7 @@
     "utf8": "disable"
   },
   "Lua.workspace.library": [
-    "~/.vscode/extensions/ketho.wow-api-0.18.2/Annotations"
+    "~\\.vscode\\extensions\\ketho.wow-api-0.18.2\\Annotations"
   ],
   "Lua.diagnostics.globals": [
     "RANGE_DAMAGE_COMBATLOG_TOOLTIP",
@@ -21,6 +21,7 @@
     "GameTooltipTextLeft3",
     "GameTooltipTextLeft4",
     "FACTION_BAR_COLORS",
-    "DECIMAL_SEPERATOR"
+    "DECIMAL_SEPERATOR",
+    "CompactPartyFrameMember1"
   ]
 }
