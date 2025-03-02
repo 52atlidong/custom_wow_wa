@@ -22,6 +22,17 @@
     "GameTooltipTextLeft4",
     "FACTION_BAR_COLORS",
     "DECIMAL_SEPERATOR",
-    "CompactPartyFrameMember1"
+    "CompactPartyFrameMember1",
+    "PaladinPowerBarFrame",
+    "RuneFrame",
+    "BAGSLOT",
+    "BANK",
+    "ALREADY_LEARNED",
+    "SPELLS",
+    "ITEMS",
+    "QUESTS_LABEL",
+    "TALENT",
+    "ACHIEVEMENTS",
+    "CURRENCY"
   ]
 }
