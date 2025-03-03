@@ -98,4 +98,3 @@ function LYC_MOUNTS.randomFlyMount()
   end
   C_MountJournal.SummonByID(mountId)
 end
-

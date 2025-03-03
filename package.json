@@ -10,5 +10,10 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.10.2"
+  },
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "node-weakauras-parser": "^3.2.3",
+    "zlibjs": "^0.3.1"
   }
 }
