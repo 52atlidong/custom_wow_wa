@@ -1,0 +1,1 @@
+const convert = require('convert-svg-to-png');
