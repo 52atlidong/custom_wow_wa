@@ -111,7 +111,7 @@ end
 
 function this.initTooltip()
 
-  if this.inited then
+  if _G["LYC_TOOLTIP_INITED"] then
     return
   end
 
@@ -131,7 +131,7 @@ function this.initTooltip()
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, TooltipBar)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, tartooltip)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, MythicScore)
-  this.inited = true
+  _G["LYC_TOOLTIP_INITED"] = true
 end
 
 function (event, ...)

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- 70 70 -->
+
+    <polygon points="50,70 90,70 90,90 50,90" fill="grey" stroke="black"/>
+
+    <polygon points="50,70 70,50 110,50 90,70" fill="grey" stroke="black"/>
+
+    <polygon points="90,70 110,50 110,70 90,90" fill="grey" stroke="black"/>
+
+    <!-- 正面 -->
+    <polygon points="40,40 100,40 100,100 40,100" fill="none" stroke="blue" />
+
+    <!-- 上表面 -->
+    <polygon points="40,40 70,10 130,10 100,40" fill="none" stroke="blue" />
+
+    <!-- 右侧面 -->
+    <polygon points="100,40 130,10 130,70 100,100" fill="none" stroke="blue" />
+
+
+<!--    <polygon points="70,70 110,70 90,90 50,90" fill="none" stroke="black" />-->
+
+</svg>
