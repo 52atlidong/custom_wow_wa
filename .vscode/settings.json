@@ -12,7 +12,7 @@
     "utf8": "disable"
   },
   "Lua.workspace.library": [
-    "~\\.vscode\\extensions\\ketho.wow-api-0.18.2\\Annotations"
+    "~/.vscode/extensions/ketho.wow-api-0.20.6/Annotations/Core"
   ],
   "Lua.diagnostics.globals": [
     "RANGE_DAMAGE_COMBATLOG_TOOLTIP",
@@ -37,6 +37,17 @@
     "ChatFrame_AddMessageEventFilter",
     "OPTIONS",
     "PLAYER_LEVEL_UP",
-    "PlayerFrame"
+    "PlayerFrame",
+    "ActionButton1",
+    "ActionButton6",
+    "GameTooltipTextLeft1",
+    "GameTooltipStatusBar",
+    "GameTooltipTextLeft2",
+    "LE_PARTY_CATEGORY_INSTANCE",
+    "ItemRefTooltip",
+    "RAID_CLASS_COLORS",
+    "ipairs_reverse",
+    "GetUnitName",
+    "Round"
   ]
 }
